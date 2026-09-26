@@ -8,7 +8,7 @@ public:
         long long mid=(long long)(low+high)/2;
         int sum=0;
         for(int i=0;i<n;i++){
-            sum+=ceil((double)nums[i]/mid);
+            sum+=ceil((double)nums[i]/(double)mid);
         }
         if(sum<=threshold){
             ans=min((int)mid,ans);

@@ -15,20 +15,14 @@ public:
     }
     int shipWithinDays(vector<int>& weights, int days) {
         int low=*max_element(weights.begin(),weights.end());
-        int n=weights.size(),sum=0,ans=INT_MAX;
-        for(int i=0;i<n;i++){
-           sum+=weights[i];
-        }
-        int high=sum;
+        int n=weights.size();
+        int high=accumulate(weights.begin(),weights.end(),0); //fun for sum of all elements of array weights
         while(low<=high){
             long long mid=(long long)(low+high)/2;
             int daysReq=DaysReq(mid,weights,n);
-            if(daysReq<=days){
-                ans=min((int)mid,ans);
-                high=mid-1;
-            }
+            if(daysReq<=days) high=mid-1;
             else low=mid+1;
         }
-        return ans;
+        return low;
     }
 };
